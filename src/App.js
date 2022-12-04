@@ -12,6 +12,8 @@ import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
 import axios from "axios";
 
+import CircularProgress from '@mui/material/CircularProgress';
+
 function App() {
   const [lourl, setLourl] = useState("");
   const [shurl, setShurl] = useState("");
@@ -61,6 +63,7 @@ function App() {
 
   function Submit(event) {
     event.preventDefault();
+    setShurl(null);
     setSubmitting(true);
     if (lourl !== "") {
       axios
@@ -148,6 +151,9 @@ function App() {
         </div>
       </form>
       {/* long url ends */}
+      {/* spinner */}
+      {shurl === null ?  <CircularProgress /> : null}
+
       {/* Url list */}
       <div class="m-4">
         <Paper sx={{ width: "100%" }}>
